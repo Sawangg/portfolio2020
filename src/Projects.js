@@ -76,7 +76,7 @@ export default function Projects() {
         technoImg: {
             width: "5vw",
             height: "auto",
-            marginRight: "1em",
+            marginRight: "1.5em",
         },
         titleWrapper: {
             display: "flex",
@@ -86,6 +86,13 @@ export default function Projects() {
         },
         repoImg: {
             width: "2vw",
+        },
+        technologies: {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: "1em"
         },
 
         '@media screen and (max-width: 600px)': {
@@ -143,6 +150,9 @@ export default function Projects() {
             repoImg: {
                 width: "7vw",
             },
+            technologies: {
+                paddingTop: "0.5em"
+            }
         },
 
         '@media screen and (min-width: 1030px) and (max-width: 1366px)': {
@@ -299,7 +309,7 @@ export default function Projects() {
                                 : null}
                             </div>
                             <p className={classes.projectDesc}>{projects[item].desc}</p>
-                            <div key={key + 2}>
+                            <div key={key + 2} className={classes.technologies}>
                                 {projects[item].technologies.map((name) => (
                                     <img key={name} className={classes.technoImg} src={process.env.PUBLIC_URL + '/assets/lng/' + name + '.svg'} alt={name} />
                                 ))}
