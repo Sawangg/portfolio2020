@@ -1,0 +1,16 @@
+{
+    "l1": "Hello, I'm ",
+    "l2": "I'm a full-stack web developper.",
+    "skill": "Skills",
+    "project": "Projects",
+
+    "projectGMPDesc": "Creation of a web interface for the GMP departement of the IUT in Limoges. This interface can build and manage custom exercices for the students.",
+    "projectPilafDesc": "Development of a website for a local organic shop so they can manage their articles, cases etc...",
+    "projectPokemonDesc": "This project is a clone of a Pokemon game done in one week in order to understand more Java.",
+    "projectPortfolioDesc": "Website containing all my technical knowledge and my project gallery.",
+    "projectNeptuneDesc": "My principal project. Neptune is a multipurpose Discord Bot that I started in 2016 in order to fill in the void of some functionnalities that are missing in Discord",
+    "projectRubiksDesc": "My first 3D project created using Processing and P5.js! The Rubik's Cube is 100% playable and there is a solving algorithm integrated.",
+
+    "thankyoutitle": "Thank you for your visit !",
+    "thankyouSubtitle": "Feel free to contact me on any platform below :"
+}
