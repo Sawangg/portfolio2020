@@ -45,8 +45,8 @@ export default function LanguageSwitcher() {
     const classes = useStyles();
 
 	const lngComponent = [
-        <img className={classes.flagImg} src={process.env.PUBLIC_URL + '/assets/flags/us_uk.svg'} alt="us_uk" />,
-        <img className={classes.flagImg} src={process.env.PUBLIC_URL + '/assets/flags/fr.svg'} alt="fr" />,
+        <img className={classes.flagImg} src={process.env.PUBLIC_URL + '/assets/flags/us_uk.svg'} alt="us_uk" width="27px" height="auto" />,
+        <img className={classes.flagImg} src={process.env.PUBLIC_URL + '/assets/flags/fr.svg'} alt="fr" width="27px" height="auto" />,
     ];
 
     return (
