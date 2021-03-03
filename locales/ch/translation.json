@@ -1,0 +1,16 @@
+{
+    "l1": "欢迎来到我的博客， 我叫 ",
+    "l2": "前端兼后端开发工程师",
+    "skill": "技能",
+    "project": "项目",
+
+    "projectGMPDesc": "为利摩日大学利穆赞科技学院机械工程学院，开发一个可以生成习题和管理成绩的线上网页平台。",
+    "projectPilafDesc": "为绿色食品公司Pilaf，开发线上管理平台，包括商品管理，库存管理，出纳管理...",
+    "projectPokemonDesc": "纯Java克隆精灵宝可梦的基本操作，耗时一周。",
+    "projectPortfolioDesc": "个人博客，我上穷碧落下黄泉，集迄今所学之大成，以洪荒之力所建。",
+    "projectNeptuneDesc": "Discord智能聊天管理机器人，具有的功能皆独一无二。我的处女作，其实乃我对程序开发的兴趣源泉。",
+    "projectRubiksDesc": "一个可以在线玩转的3D魔方，包含可以自动拼满各边颜色的函数。我的第一个3D小程序。",
+
+    "thankyoutitle": "感谢您的浏览",
+    "thankyouSubtitle": "想要了解更多？请点击以下链接："
+}
