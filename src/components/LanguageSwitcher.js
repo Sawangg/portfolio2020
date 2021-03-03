@@ -6,7 +6,7 @@ import { Transition } from "react-spring/renderprops";
 
 export default function LanguageSwitcher() {
     const { i18n } = useTranslation();
-    const lng = ["en", "fr"];
+    const lng = ["en", "fr", "ch"];
     const [index, set] = useState(lng.indexOf(i18n.language));
 
     const useStyles = createUseStyles({
@@ -47,6 +47,7 @@ export default function LanguageSwitcher() {
 	const lngComponent = [
         <img className={classes.flagImg} src={process.env.PUBLIC_URL + '/assets/flags/us_uk.svg'} alt="us_uk" width="27px" height="auto" />,
         <img className={classes.flagImg} src={process.env.PUBLIC_URL + '/assets/flags/fr.svg'} alt="fr" width="27px" height="auto" />,
+        <img className={classes.flagImg} src={process.env.PUBLIC_URL + '/assets/flags/ch.svg'} alt="ch" width="27px" height="auto" />,
     ];
 
     return (

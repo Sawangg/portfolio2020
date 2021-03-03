@@ -88,7 +88,9 @@ export default function Landing() {
         <animated.div className={classes.root} style={{ transform: offset.interpolate(calc) }}>
             <animated.div {...bind()} className={classes.logo} style={{ transform: xy.interpolate((x, y) => `translate3d(${x}px, ${y}px, 0)`) }} />
             <div className={classes.textlanding}>
-                <h1 className={classes.text}>{t("l1")}<a href={process.env.PUBLIC_URL + '/assets/resume/resume_' + i18n.language +'.pdf'} target="_blank" rel="noreferrer" className={classes.textHighlight}>Léo Mercier</a>.</h1>
+                {i18n.language !== "ch" 
+                    ? <h1 className={classes.text}>{t("l1")}<a href={process.env.PUBLIC_URL + '/assets/resume/resume_' + i18n.language +'.pdf'} target="_blank" rel="noreferrer" className={classes.textHighlight}>Léo Mercier</a>.</h1>     
+                    : <h1 className={classes.text}>{t("l1")}<a href={process.env.PUBLIC_URL + '/assets/resume/resume_en.pdf'} target="_blank" rel="noreferrer" className={classes.textHighlight}>Léo Mercier</a>.</h1>}
                 <h1 className={classes.text}>{t("l2")}</h1>
             </div>
         </animated.div>

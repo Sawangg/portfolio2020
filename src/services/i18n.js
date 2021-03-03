@@ -4,7 +4,7 @@ import HttpApi from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 
 i18next.use(initReactI18next).use(HttpApi).use(LanguageDetector).init({
-	supportedLngs: ["en", "fr"],
+	supportedLngs: ["en", "fr", "ch"],
 	interpolation: {
 		escapeValue: false,
 	},
