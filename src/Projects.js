@@ -208,6 +208,7 @@ export default function Projects() {
             desc: t("projectGMPDesc"),
             img: "GMP.png",
             technologies: ["react", "express", "mysql"],
+            repo: "https://github.com/Sawangg/GMPPT",
         },
     ];
 
