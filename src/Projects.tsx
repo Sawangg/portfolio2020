@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useTranslation } from "react-i18next";
 import { useSprings, useTransition, animated, interpolate } from "react-spring";
 import { useDrag } from 'react-use-gesture';
 
 export default function Projects() {
-
     const { t } = useTranslation();
 
     const useStyles = createUseStyles({
@@ -62,7 +61,7 @@ export default function Projects() {
             alignContent: "center",
             alignItems: "center",
             padding: "0 5em 0 10em",
-            //zIndex: -1,
+            // zIndex: -1,
         },
         projectTitle: {
             fontSize: "25pt",
@@ -186,7 +185,7 @@ export default function Projects() {
             name: "Portfolio",
             desc: t("projectPortfolioDesc"),
             img: 'portfolio.png',
-            technologies: ["react", "javascript"],
+            technologies: ["react", "typescript"],
             repo: "https://github.com/Sawangg/portfolio",
         },
         {
@@ -214,17 +213,17 @@ export default function Projects() {
 
     const classes = useStyles();
 
-    const to = i => ({ x: 0, y: i * -4, scale: 1, rot: -10 + Math.random() * 20, delay: i * 100 });
+    const to = (i: number) => ({ x: 0, y: i * -4, scale: 1, rot: -10 + Math.random() * 20, delay: i * 100 });
     const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
 
-    const [gone] = useState(() => new Set());
+    const [gone] = useState(() => new Set<number>());
     const [toggle, setToggle] = useState(projects.length - 1);
     const [cards, setCards] = useSprings(projects.length, i => ({ ...to(i), from: from() }));
     const bind = useDrag(({ event, args: [index], down, delta: [xDelta], direction: [xDir], velocity }) => {
         event.preventDefault();
         const dir = xDir < 0 ? -1 : 1;
         if (!down && velocity > 0.2) gone.add(index);
-        setCards(i => {
+        setCards.start((i) => {
             if (index !== i || toggle !== i) return;
             const isGone = gone.has(index);
             return { x: isGone ? (200 + window.innerWidth) * dir : down ? xDelta : 0, rot: xDelta / 100 + (isGone ? dir * 10 * velocity : 0), scale: down ? 1.1 : 1, config: { friction: 50, tension: down ? 800 : isGone ? 200 : 1500 } };
@@ -240,14 +239,8 @@ export default function Projects() {
         rubberband: false,
     });
 
-    const transitions = useTransition(toggle, null, {
-        from: { opacity: 0 },
-        enter: { opacity: 1 },
-        leave: { opacity: 0 },
-    });
-
-    const scrollCardEject = (index) => {
-        setCards(i => {
+    const scrollCardEject = (index: number) => {
+        setCards.start((i) => {
             if (toggle !== i) return;
             gone.add(index);
             setToggle(index > 0 ? index - 1 : index);
@@ -280,6 +273,8 @@ export default function Projects() {
         }
     };
 
+    const transitions = useTransition(toggle, { from: { opacity: 0 }, enter: { opacity: 1 }, leave: { opacity: 0 } });
+
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
         return () => {
@@ -299,24 +294,26 @@ export default function Projects() {
                     ))}
                 </div>
                 <div className={classes.textWrapper}>
-                    {transitions.map(({ item, props, key }) => (
-                        <animated.div key={key} style={{ ...props, position: "absolute", padding: "0 0.5em" }}>
-                            <div key={key + 1} className={classes.titleWrapper}>
-                                <h1 className={classes.projectTitle}>{projects[item].name}</h1>
-                                {(projects[item].repo !== undefined) ?
-                                    <a href={projects[item].repo} target="_blank" rel="noreferrer">
-                                        <img className={classes.repoImg} src={process.env.PUBLIC_URL + '/assets/contact/github.svg'} alt="github" />
-                                    </a>
-                                : null}
-                            </div>
-                            <p className={classes.projectDesc}>{projects[item].desc}</p>
-                            <div key={key + 2} className={classes.technologies}>
-                                {projects[item].technologies.map((name) => (
-                                    <img key={name} className={classes.technoImg} src={process.env.PUBLIC_URL + '/assets/lng/' + name + '.svg'} alt={name} />
-                                ))}
-                            </div>
-                        </animated.div>
-                    ))}
+                    {transitions((props: any, item: number, key: any) => {
+                        return (
+                            <animated.div key={key} style={{ ...props, position: "absolute", padding: "0 0.5em" }}>
+                                <div key={key + 1} className={classes.titleWrapper}>
+                                    <h1 className={classes.projectTitle}>{projects[item].name}</h1>
+                                    {(projects[item].repo !== undefined) ?
+                                        <a href={projects[item].repo} target="_blank" rel="noreferrer">
+                                            <img className={classes.repoImg} src={process.env.PUBLIC_URL + '/assets/contact/github.svg'} alt="github" />
+                                        </a>
+                                        : null}
+                                </div>
+                                <p className={classes.projectDesc}>{projects[item].desc}</p>
+                                <div key={key + 2} className={classes.technologies}>
+                                    {projects[item].technologies.map((name) => (
+                                        <img key={name} className={classes.technoImg} src={process.env.PUBLIC_URL + '/assets/lng/' + name + '.svg'} alt={name} />
+                                    ))}
+                                </div>
+                            </animated.div>
+                        );
+                    })}
                 </div>
             </div>
         </div>

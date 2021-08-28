@@ -4,11 +4,14 @@ import { createUseStyles } from 'react-jss';
 export const Progression = () => {
 
     const [value, setValue] = useState(Math.floor((window.scrollY / (window.document.body.offsetHeight - Math.max(document.documentElement.clientHeight, window.innerHeight || 0))) * 100));
-    const componentRef = useRef(); // TODO : Remove ref and use a spring
+    const componentRef = useRef<any>(); // TODO : Remove ref and use a spring
 
     const handleScroll = () => {
         setValue((window.scrollY / (window.document.body.offsetHeight - Math.max(document.documentElement.clientHeight, window.innerHeight || 0))) * 100);
-        if (componentRef.current) componentRef.current.style = 'transition: stroke-dashoffset 850ms ease-in-out;';
+        if (componentRef) {
+            const styleRef = componentRef?.current;
+            styleRef.style = 'transition: stroke-dashoffset 850ms ease-in-out;';
+        }
     };
 
     useEffect(() => {

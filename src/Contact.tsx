@@ -1,4 +1,3 @@
-import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { useTranslation } from "react-i18next";
 
@@ -71,7 +70,7 @@ export default function Contact() {
                     <a href="https://github.com/Sawangg" target="_blank" rel="noreferrer">
                         <img className={classes.img} src={process.env.PUBLIC_URL + '/assets/contact/github.svg'} alt="github"/>
                     </a>
-                    <a href="mailto:leo.mercier1@etu.unilim.fr" target="_blank" rel="noreferrer">
+                    <a href="mailto:leo.mercier@efrei.net" target="_blank" rel="noreferrer">
                         <img className={classes.img} src={process.env.PUBLIC_URL + '/assets/contact/email.svg'} alt="email"/>
                     </a>
                     <a href="https://www.linkedin.com/in/l%C3%A9o-mercier-9b3828207/" target="_blank" rel="noreferrer">

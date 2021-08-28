@@ -1,4 +1,4 @@
-import React from "react";
+import { Suspense } from "react";
 import { createUseStyles } from 'react-jss';
 import injectSheet from 'react-jss';
 import Particules from "./Particules";
@@ -7,7 +7,7 @@ import LanguageSwitcher from "./components/LanguageSwitcher";
 import Progression from "./components/Progression";
 import './services/i18n';
 
-const style = {
+const defaultStyle = {
 	'@global': {
 		'*, *::before, *::after': {
 			scrollbarColor: '#202324 #454a4d',
@@ -74,15 +74,15 @@ const App = () => {
 	return (
 		<div className={classes.rootFixed}>
 			<Particules />
-			<React.Suspense fallback="Loading...">
+			<Suspense fallback="Loading...">
 				<Progression />
 				<ComponentTransition />
 				<div className={classes.footer}>
 					<LanguageSwitcher />
 				</div>
-			</React.Suspense>
+			</Suspense>
 		</div>
 	);
 }
 
-export default injectSheet(style)(App);
+export default injectSheet(defaultStyle)(App);

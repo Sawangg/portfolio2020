@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useTranslation } from "react-i18next";
-import { animated } from 'react-spring';
-import { Transition } from "react-spring/renderprops";
+import { animated, Transition } from "react-spring";
 
 export default function LanguageSwitcher() {
     const { i18n } = useTranslation();
@@ -44,7 +43,7 @@ export default function LanguageSwitcher() {
 
     const classes = useStyles();
 
-	const lngComponent = [
+    const lngComponent = [
         <img className={classes.flagImg} src={process.env.PUBLIC_URL + '/assets/flags/us_uk.svg'} alt="us_uk" width="27px" height="auto" />,
         <img className={classes.flagImg} src={process.env.PUBLIC_URL + '/assets/flags/fr.svg'} alt="fr" width="27px" height="auto" />,
         <img className={classes.flagImg} src={process.env.PUBLIC_URL + '/assets/flags/ch.svg'} alt="ch" width="27px" height="auto" />,
@@ -56,9 +55,9 @@ export default function LanguageSwitcher() {
             set(temp);
             i18n.changeLanguage(lng[temp]);
         }}>
-            <Transition items={index} from={{ opacity: 0, transform: 'translate3d(100%, 0, 0)' }} enter={{ opacity: 1, transform: 'translate3d(0%, 0, 0)' }} leave={{ opacity: 0, transform: 'translate3d(-50%, 0, 0)' }}>
-                {idx => styles => (
-                    <animated.div style={{ ...styles }} className={classes.flagButton}>
+            <Transition items={index} from={{ opacity: 0 }} enter={{ opacity: 1 }} leave={{ opacity: 0 }}>
+                {({ opacity }, idx: number) => (
+                    <animated.div style={{ opacity }} className={classes.flagButton}>
                         {lngComponent[idx]}
                     </animated.div>
                 )}

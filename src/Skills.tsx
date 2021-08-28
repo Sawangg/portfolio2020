@@ -1,4 +1,3 @@
-import { React } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useTranslation } from "react-i18next";
 import { useSprings, animated } from 'react-spring';
